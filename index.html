@@ -317,5 +317,161 @@ function login() {
 
 </body>
 </html>
+  <!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+}
+
+.card {
+  width: 350px;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 15px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.login {
+  background: #2196f3;
+  color: white;
+}
+
+.signup {
+  background: #00c853;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.small {
+  font-size: 13px;
+  color: gray;
+  margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <h2>👋 أهلاً بك</h2>
+  <p class="small">سجل أو أنشئ حساب جديد</p>
+
+  <input id="email" placeholder="البريد الإلكتروني">
+  <input id="password" type="password" placeholder="كلمة المرور">
+
+  <button class="login" onclick="login()">تسجيل الدخول</button>
+  <button class="signup" onclick="signUp()">إنشاء حساب</button>
+
+</div>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyCbt-jTje1t6isSMRYtsBdKsLSRt8coolM",
+  authDomain: "skilllearn-ed594.firebaseapp.com",
+  projectId: "skilllearn-ed594",
+  storageBucket: "skilllearn-ed594.firebasestorage.app",
+  messagingSenderId: "518686901030",
+  appId: "1:518686901030:web:3aa6b4874bb1fac75b77e7"
+};
+
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+
+// إنشاء حساب حقيقي
+function signUp() {
+  let email = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
+
+  if(email === "" || password === "") {
+    alert("من فضلك املأ البيانات");
+    return;
+  }
+
+  auth.createUserWithEmailAndPassword(email, password)
+    .then(user => {
+      alert("تم إنشاء الحساب بنجاح 🎉");
+
+      let name = user.user.email.split("@")[0];
+      localStorage.setItem("username", name);
+
+      window.location.href = "dashboard.html";
+    })
+    .catch(error => alert(error.message));
+}
+
+// تسجيل دخول حقيقي
+function login() {
+  let email = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
+
+  if(email === "" || password === "") {
+    alert("من فضلك املأ البيانات");
+    return;
+  }
+
+  auth.signInWithEmailAndPassword(email, password)
+    .then(user => {
+
+      let name = user.user.email.split("@")[0];
+      localStorage.setItem("username", name);
+
+      alert("تم تسجيل الدخول بنجاح ✅");
+
+      window.location.href = "dashboard.html";
+    })
+    .catch(error => alert(error.message));
+}
+</script>
+
+</body>
+</html>
 </body>
     </html>
