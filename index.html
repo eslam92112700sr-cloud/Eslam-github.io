@@ -2,28 +2,159 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>منصة تعلم المهارات</title>
+
 <style>
-body{
-    font-family: Arial;
-    text-align:center;
-    background:#f5f5f5;
-    margin-top:50px;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
+
+body{
+background:#f4f6f9;
+}
+
+header{
+background:#2563eb;
+color:white;
+padding:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin:0 10px;
+}
+
+.hero{
+text-align:center;
+padding:60px 20px;
+background:white;
+}
+
+.hero h1{
+font-size:36px;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:18px;
+color:#555;
+margin-bottom:20px;
+}
+
+.btn{
+background:#2563eb;
+color:white;
+padding:12px 25px;
+border-radius:8px;
+text-decoration:none;
+display:inline-block;
+}
+
+.courses{
+padding:40px 20px;
+}
+
+.courses h2{
+text-align:center;
+margin-bottom:30px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
 .card{
-    background:white;
-    width:80%;
-    margin:auto;
-    padding:20px;
-    border-radius:10px;
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+.card p{
+color:#666;
+margin-bottom:15px;
+}
+
+footer{
+background:#111827;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:40px;
 }
 </style>
+
 </head>
 <body>
+
+<header>
+<div class="logo">📚 منصة تعلم المهارات</div>
+
+<nav>
+<a href="#">الرئيسية</a>
+<a href="#">الكورسات</a>
+<a href="#">من نحن</a>
+<a href="#">تواصل معنا</a>
+</nav>
+</header>
+
+<section class="hero">
+<h1>تعلم مهارات جديدة مجانًا</h1>
+<p>برمجة - تصميم - ذكاء اصطناعي - تسويق رقمي</p>
+<a href="#" class="btn">ابدأ التعلم</a>
+</section>
+
+<section class="courses">
+<h2>أقسام المنصة</h2>
+
+<div class="cards">
+
 <div class="card">
-<h1>منصة تعلم المهارات</h1>
-<p>تعلم البرمجة والتصميم والذكاء الاصطناعي مجانًا</p>
-<button>ابدأ التعلم</button>
+<h3>💻 البرمجة</h3>
+<p>تعلم HTML وCSS وJavaScript</p>
 </div>
+
+<div class="card">
+<h3>🎨 التصميم</h3>
+<p>تعلم التصميم والجرافيك</p>
+</div>
+
+<div class="card">
+<h3>🤖 الذكاء الاصطناعي</h3>
+<p>تعرف على أدوات AI الحديثة</p>
+</div>
+
+<div class="card">
+<h3>📈 التسويق الرقمي</h3>
+<p>تعلم التسويق وصناعة المحتوى</p>
+</div>
+
+</div>
+</section>
+
+<footer>
+جميع الحقوق محفوظة © 2026
+</footer>
+
 </body>
-</html>
+    </html>
