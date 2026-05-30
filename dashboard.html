@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0f172a;
+  color: white;
+  min-height: 100vh;
+}
+
+/* شريط علوي */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+}
+
+.nav h2 {
+  font-size: 18px;
+}
+
+.logout {
+  background: #ef4444;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+/* المحتوى */
+.container {
+  padding: 30px;
+}
+
+.card {
+  background: rgba(255,255,255,0.07);
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.box {
+  background: rgba(255,255,255,0.08);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.box:hover {
+  transform: scale(1.05);
+  background: rgba(255,255,255,0.12);
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div class="nav">
+  <h2>👋 مرحبًا، <span id="name">User</span></h2>
+  <button class="logout" onclick="logout()">تسجيل خروج</button>
+</div>
+
+<!-- Content -->
+<div class="container">
+
+  <div class="card">
+    <h3>📊 لوحة التحكم</h3>
+    <p>مرحبًا بك في حسابك 👌</p>
+  </div>
+
+  <div class="grid">
+
+    <div class="box">
+      📚<br>
+      كورساتي
+    </div>
+
+    <div class="box">
+      👤<br>
+      حسابي
+    </div>
+
+    <div class="box">
+      🔥<br>
+      الدورات الجديدة
+    </div>
+
+    <div class="box">
+      ⚙️<br>
+      الإعدادات
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyCbt-jTje1t6isSMRYtsBdKsLSRt8coolM",
+  authDomain: "skilllearn-ed594.firebaseapp.com",
+  projectId: "skilllearn-ed594",
+  storageBucket: "skilllearn-ed594.firebasestorage.app",
+  messagingSenderId: "518686901030",
+  appId: "1:518686901030:web:3aa6b4874bb1fac75b77e7"
+};
+
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+
+/* حماية الصفحة */
+auth.onAuthStateChanged(user => {
+  if (user) {
+    let name = user.email.split("@")[0];
+    document.getElementById("name").innerText = name;
+  } else {
+    // لو مش مسجل دخول يرجعه لصفحة login
+    window.location.href = "index.html";
+  }
+});
+
+/* تسجيل خروج */
+function logout() {
+  auth.signOut().then(() => {
+    window.location.href = "index.html";
+  });
+}
+</script>
+
+</body>
+</html>
