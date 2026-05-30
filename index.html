@@ -156,6 +156,52 @@ margin-top:40px;
 <footer>
 جميع الحقوق محفوظة © 2026
 </footer>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics-compat.js"></script>
 
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCbt-jTje1t6isSMRYtsBdKsLSRt8coolM",
+    authDomain: "skilllearn-ed594.firebaseapp.com",
+    projectId: "skilllearn-ed594",
+    storageBucket: "skilllearn-ed594.firebasestorage.app",
+    messagingSenderId: "518686901030",
+    appId: "1:518686901030:web:3aa6b4874bb1fac75b77e7",
+    measurementId: "G-MRT0NG20Q2"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+  const auth = firebase.auth();
+</script>
+    <script>
+function signUp(email, password) {
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then(() => {
+      alert("تم إنشاء الحساب بنجاح");
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
+}
+
+function login(email, password) {
+  firebase.auth().signInWithEmailAndPassword(email, password)
+    .then(() => {
+      alert("تم تسجيل الدخول");
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
+}
+    </script>
+
+    <input id="email" placeholder="الإيميل">
+<input id="password" type="password" placeholder="كلمة المرور">
+
+<button onclick="signUp(email.value, password.value)">تسجيل حساب</button>
+<button onclick="login(email.value, password.value)">تسجيل دخول</button>
 </body>
     </html>
